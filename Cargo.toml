@@ -1,6 +1,64 @@
-[package]
+[workspace]
 name = "r8s"
 version = "0.1.0"
 edition = "2021"
+authors = ["R8s Team"]
+description = "Um orquestrador de workflows distribuído escrito em Rust"
+license = "MIT"
+repository = "https://github.com/r8s-team/r8s"
 
-[dependencies]
+members = [
+    "crates/r8s-core",
+    "crates/r8s-execution",
+    "crates/r8s-plugin",
+    "crates/r8s-persistence",
+    "crates/r8s-api",
+    "crates/r8s-cli",
+]
+
+[workspace.dependencies]
+# Serializaçao e Deserializaçao
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Async Runtime
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+# Web Framework
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+hyper = "1.1"
+
+# PostgreSQL
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "uuid", "json", "chrono", "migrate"] }
+uuid = { version = "1.4", features = ["serde", "v4"] }
+
+# Ambiente de execução para linguagens
+rusty_v8 = "0.32"
+wasmer = "4.2"
+mlua = { version = "0.9", features = ["lua54", "vendored", "serialize"] }
+
+# Logging e tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilidades
+anyhow = "1.0"
+thiserror = "1.0"
+async-trait = "0.1"
+chrono = { version = "0.4", features = ["serde"] }
+dotenv = "0.15"
+config = "0.13"
+validator = { version = "0.16", features = ["derive"] }
+dashmap = "5.5"
+
+# Segurança
+jsonwebtoken = "9.1"
+argon2 = "0.5"
+rand = "0.8"
+
+# Testes
+rstest = "0.18"
+mockall = "0.11"

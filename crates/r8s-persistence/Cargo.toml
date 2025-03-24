@@ -1,0 +1,29 @@
+[package]
+name = "r8s-persistence"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "Persistence layer for the r8s workflow orchestrator"
+
+[dependencies]
+# Internal crates
+r8s-core = { path = "../r8s-core" }
+
+# Workspace dependencies
+sqlx = { workspace = true }
+uuid = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+async-trait = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+chrono = { workspace = true }
+
+# Database migrations
+refinery = { version = "0.8", features = ["tokio-postgres"] }
+
+# Connection pooling
+deadpool-postgres = "0.10"
+tokio-postgres = "0.7"

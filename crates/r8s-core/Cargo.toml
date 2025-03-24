@@ -1,0 +1,21 @@
+[package]
+name = "r8s-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "Core domain e lógica de negócios para o orquestrador de workflows r8s"
+
+[dependencies]
+# Workspace dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+validator = { workspace = true }
+tokio = { workspace = true }
+
+# Metadata e esquemas
+jsonschema = "0.17"

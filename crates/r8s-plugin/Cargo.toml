@@ -1,0 +1,25 @@
+[package]
+name = "r8s-plugin"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "Plugin system for the r8s workflow orchestrator"
+
+[dependencies]
+# Internal crates
+r8s-core = { path = "../r8s-core" }
+
+# Workspace dependencies
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+dashmap = { workspace = true }
+
+# Plugin system dependencies
+libloading = "0.8"
+semver = "1.0"

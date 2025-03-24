@@ -1,0 +1,32 @@
+[package]
+name = "r8s-execution"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "Execution engine for the r8s workflow orchestrator"
+
+[dependencies]
+# Internal crates
+r8s-core = { path = "../r8s-core" }
+
+# Workspace dependencies
+tokio = { workspace = true }
+futures = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# Runtime dependencies
+rusty_v8 = { workspace = true }
+wasmer = { workspace = true }
+mlua = { workspace = true }
+dashmap = { workspace = true }
+
+# Worker coordination
+tokio-util = "0.7"
+bytes = "1.4"

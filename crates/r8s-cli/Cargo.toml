@@ -1,0 +1,30 @@
+[package]
+name = "r8s-cli"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "Command line interface for the r8s workflow orchestrator"
+
+[dependencies]
+# Internal crates
+r8s-core = { path = "../r8s-core" }
+r8s-persistence = { path = "../r8s-persistence" }
+r8s-execution = { path = "../r8s-execution" }
+r8s-plugin = { path = "../r8s-plugin" }
+r8s-api = { path = "../r8s-api" }
+
+# Workspace dependencies
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+dotenv = { workspace = true }
+config = { workspace = true }
+
+# CLI dependencies
+clap = { version = "4.3", features = ["derive"] }
+colored = "2.0"
+dialoguer = "0.10"
+indicatif = "0.17"
+console = "0.15"

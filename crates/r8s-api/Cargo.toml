@@ -1,0 +1,39 @@
+[package]
+name = "r8s-api"
+version = "0.1.0"
+edition = "2021"
+authors = ["R8s Team"]
+description = "RESTful API for the r8s workflow orchestrator"
+
+[dependencies]
+# Internal crates
+r8s-core = { path = "../r8s-core" }
+r8s-persistence = { path = "../r8s-persistence" }
+r8s-execution = { path = "../r8s-execution" }
+r8s-plugin = { path = "../r8s-plugin" }
+
+# Workspace dependencies
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# API dependencies
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+hyper = { workspace = true }
+validator = { workspace = true }
+
+# Authentication
+jsonwebtoken = { workspace = true }
+
+# OpenAPI/Swagger
+utoipa = "3.0"
+utoipa-swagger-ui = "3.0"
