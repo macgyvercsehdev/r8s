@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: r8s
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  r8s:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      R8S_DATABASE__HOST: postgres
+      R8S_DATABASE__PORT: 5432
+      R8S_DATABASE__URL: postgres://postgres:postgres@postgres:5432/r8s
+      R8S_ADMIN_USERNAME: admin
+      R8S_ADMIN_EMAIL: admin@example.com
+      R8S_ADMIN_PASSWORD: changeme
+      R8S_API__JWT_SECRET: your_secure_jwt_secret_key_here
+    volumes:
+      - r8s_plugins:/opt/r8s/plugins
+      - r8s_config:/opt/r8s/config
+      - r8s_data:/opt/r8s/data
+
+volumes:
+  postgres_data:
+  r8s_plugins:
+  r8s_config:
+  r8s_data:
